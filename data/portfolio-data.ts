@@ -138,21 +138,21 @@ export const goals = [
   {
     title: "Technical Excellence",
     description:
-      "Master full-stack development and stay updated with cutting-edge technologies to build scalable, efficient applications.",
+      "Build a strong foundation in full-stack development and keep learning modern technologies to create reliable and scalable applications.",
   },
   {
-    title: "Entrepreneurial Ventures",
+    title: "Future Entrepreneurial Journey",
     description:
-      "Launch innovative startups that solve real-world problems and create value for users and society.",
+      "Prepare myself to eventually start tech ventures—whether as an indie hacker or in a team—by learning how to turn ideas into real products that can help people.",
   },
   {
     title: "Open Source Contribution",
     description:
-      "Contribute to open-source projects and build tools that help the developer community grow and thrive.",
+      "Get involved in open-source projects to improve my skills, collaborate with developers worldwide, and give back to the community.",
   },
   {
     title: "Continuous Learning",
     description:
-      "Embrace lifelong learning, explore emerging technologies, and adapt to the ever-evolving tech landscape.",
+      "Stay curious and keep exploring new technologies, improving not just technical knowledge but also problem-solving and creative thinking.",
   },
 ];
