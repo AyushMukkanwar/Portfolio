@@ -72,7 +72,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Postinator Social Media Automation",
     description:
-      "A social media automation platform currently under development that will allow users to schedule, manage, and publish posts across multiple platforms seamlessly. It is being built with a modern full-stack architecture, leveraging background job processing, caching, and scalable APIs to ensure reliable and efficient automation.",
+      "A social media automation platform, initially developed for Twitter, that allows users to schedule, manage, and publish posts seamlessly. It is built with a modern full-stack architecture, leveraging background job processing, caching, and scalable APIs to ensure reliable and efficient automation.",
     technologies: [
       "Next.js",
       "NestJS",
