@@ -30,9 +30,9 @@ export interface PersonalInfo {
 // Personal Information
 export const personalInfo: PersonalInfo = {
   name: "Ayush Mukkanwar",
-  title: "Developer & Aspiring Entrepreneur",
+  title: "Software Engineer",
   subtitle: "BTech IT Student at IIIT Allahabad",
-  bio: "Passionate about building innovative web solutions and exploring entrepreneurial opportunities. Currently pursuing BTech in Information Technology with Business Informatics and a minor in Entrepreneurship.",
+  bio: "Passionate about developing software to solve problems. I love tech and open source, and I am currently contributing to Rocket.Chat. Currently pursuing BTech in Information Technology with Business Informatics.",
   location: "IIIT Allahabad, India",
   email: "ayushmukkanwar@gmail.com",
   github: "https://github.com/AyushMukkanwar",
@@ -141,9 +141,9 @@ export const goals = [
       "Build a strong foundation in full-stack development and keep learning modern technologies to create reliable and scalable applications.",
   },
   {
-    title: "Future Entrepreneurial Journey",
+    title: "Problem Solving",
     description:
-      "Prepare myself to eventually start tech ventures—whether as an indie hacker or in a team—by learning how to turn ideas into real products that can help people.",
+      "Focusing on developing robust software solutions that address real-world challenges and contributing to the open source community.",
   },
   {
     title: "Open Source Contribution",

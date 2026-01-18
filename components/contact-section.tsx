@@ -17,6 +17,11 @@ export function ContactSection() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,7 +30,7 @@ export function ContactSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const element = document.getElementById("contact");
@@ -34,16 +39,54 @@ export function ContactSection() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form under development, please try later.");
-    console.log("Form submitted:", formData);
-    // You can integrate with your preferred form handling service
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("https://formspree.io/f/mreepynr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus({
+          type: "success",
+          message: "Message sent! I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, "errors")) {
+          setStatus({
+            type: "error",
+            message: data["errors"]
+              .map((error: any) => error["message"])
+              .join(", "),
+          });
+        } else {
+          setStatus({
+            type: "error",
+            message: "Oops! There was a problem submitting your form",
+          });
+        }
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Oops! There was a problem submitting your form",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -195,13 +238,32 @@ export function ContactSection() {
                       />
                     </div>
 
+                    {status.message && (
+                      <div
+                        className={`p-3 rounded-md text-sm ${
+                          status.type === "success"
+                            ? "bg-green-500/10 text-green-500"
+                            : "bg-red-500/10 text-red-500"
+                        }`}
+                      >
+                        {status.message}
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
+                      disabled={isSubmitting}
                       size="lg"
-                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
+                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>
