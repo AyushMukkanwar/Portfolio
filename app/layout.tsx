@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Portfolio - Web Developer & Entrepreneur",
+  title: "Portfolio - Software Developer",
   description: "Portfolio of a passionate web developer and aspiring entrepreneur from IIIT Allahabad",
   generator: "v0.app",
 }
